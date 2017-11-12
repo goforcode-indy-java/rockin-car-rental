@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lmig.gfc.rentals.models.Car;
 import com.lmig.gfc.rentals.models.Fleet;
+import com.lmig.gfc.rentals.models.Person;
 
 @Controller
 public class RentalController {
@@ -28,11 +29,22 @@ public class RentalController {
 	}
 	
 	@RequestMapping("/rent")
-	public ModelAndView rentCar(int index) {
-		fleet.makeCarUnavailable(index - 1);
+	public ModelAndView rentCar(int index, String firstName, String lastName, String license, String state) {
+		Person renter = new Person(firstName, lastName, license, state);
+		fleet.makeCarUnavailable(index - 1, renter);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:/");
+		return mv;
+	}
+	
+	@RequestMapping("/rental")
+	public ModelAndView showRentFormForCar(int index) {
+		Car car = fleet.getAvailableCars().get(index - 1);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("rentalForm");
+		mv.addObject("car", car);
+		mv.addObject("index", index);
 		return mv;
 	}
 

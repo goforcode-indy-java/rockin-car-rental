@@ -29,7 +29,7 @@
 					<td>{{ model }}</td>
 					<td>{{ year }}</td>
 					<td>
-						<form method="post" action="/rent">
+						<form method="post" action="/rental">
 							<input type="hidden" name="index" value="{{ -index }}">
 							<button>Rent out to make some money!</button>
 						</form>
@@ -45,14 +45,18 @@
 				<th>Make</th>
 				<th>Model</th>
 				<th>Year</th>
+				<th>First Name</th>
+				<th>Last Name</th>
 			</tr>
 		</thead>
 		<tbody>
 			{{#fleet.unavailableCars}}
 				<tr>
-					<td>{{ make }}</td>
-					<td>{{ model }}</td>
-					<td>{{ year }}</td>
+					<td>{{ car.make }}</td>
+					<td>{{ car.model }}</td>
+					<td>{{ car.year }}</td>
+					<td>{{ renter.firstName }}</td>
+					<td>{{ renter.lastName }}</td>
 					<td>
 						<form method="post" action="/return">
 							<input type="hidden" name="index" value="{{ -index }}">

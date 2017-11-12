@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a new car, sucker</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+
+	<h1>Rent this car out!</h1>
+	<ul>
+		<li>Make: {{ car.make }}</li>
+		<li>Model: {{ car.model }}</li>
+		<li>Year: {{ car.year }}</li>
+	</ul>
+
+	<form method="post" action="/rent">
+		<div>
+			<label>
+				First name
+				<input type="text" name="firstName" required>
+			</label>
+		</div>
+		<div>
+			<label>
+				Last name
+				<input type="text" name="lastName" required>
+			</label>
+		</div>
+		<div>
+			<label>
+				License
+				<input type="text" name="license" required>
+			</label>
+		</div>
+		<div>
+			<label>
+				State
+				<input type="text" name="state" required>
+			</label>
+		</div>
+		<input type="hidden" name="index" value="{{ index }}">
+		<button>Rent this car $$$</button>
+	</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Fleet {
 	
 	private ArrayList<Car> availableCars;
-	private ArrayList<Car> unavailableCars;
+	private ArrayList<Rental> unavailableCars;
 	
 	public Fleet() {
 		availableCars = new ArrayList<Car>();
-		unavailableCars = new ArrayList<Car>();
+		unavailableCars = new ArrayList<Rental>();
 	}
 	
 	public void addCar(Car car) {
@@ -17,20 +17,21 @@ public class Fleet {
 	}
 	
 	public void makeCarAvailable(int index) {
-		Car car = unavailableCars.remove(index);
-		availableCars.add(car);
+		Rental rental = unavailableCars.remove(index);
+		availableCars.add(rental.getCar());
 	}
 	
-	public void makeCarUnavailable(int index) {
+	public void makeCarUnavailable(int index, Person person) {
 		Car car = availableCars.remove(index);
-		unavailableCars.add(car);
+		Rental rental = new Rental(person, car);
+		unavailableCars.add(rental);
 	}
 
 	public ArrayList<Car> getAvailableCars() {
 		return availableCars;
 	}
 
-	public ArrayList<Car> getUnavailableCars() {
+	public ArrayList<Rental> getUnavailableCars() {
 		return unavailableCars;
 	}
 
