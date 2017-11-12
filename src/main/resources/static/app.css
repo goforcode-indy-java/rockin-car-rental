@@ -1,0 +1,14 @@
+body {
+	font-family: 'Gill Sans', Verdana;
+	background-color: black;
+	color: yellow;
+}
+
+a {
+	color: #ff00ff;
+	transition: font-size .5s;
+}
+
+a:hover {
+	font-size: 110%;
+}

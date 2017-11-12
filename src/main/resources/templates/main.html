@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Rockin' Rentals</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+	<a href="/add_car">Add a car to make some money</a>
+	
+	{{#showLowCarError}}
+		<div class="error">
+			Warning: You need more cars!
+		</div>
+	{{/showLowCarError}}
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Year</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#fleet.availableCars}}
+				<tr>
+					<td>{{ make }}</td>
+					<td>{{ model }}</td>
+					<td>{{ year }}</td>
+					<td>
+						<form method="post" action="/rent">
+							<input type="hidden" name="index" value="{{ -index }}">
+							<button>Rent out to make some money!</button>
+						</form>
+					</td>
+				</tr>
+			{{/fleet.availableCars}}
+		</tbody>
+	</table>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Year</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#fleet.unavailableCars}}
+				<tr>
+					<td>{{ make }}</td>
+					<td>{{ model }}</td>
+					<td>{{ year }}</td>
+					<td>
+						<form method="post" action="/return">
+							<input type="hidden" name="index" value="{{ -index }}">
+							<button>Return :-(</button>
+						</form>
+					</td>
+				</tr>
+			{{/fleet.unavailableCars}}
+		</tbody>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
