@@ -1,9 +1,15 @@
 package com.lmig.gfc.rentals.controllers;
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.lmig.gfc.rentals.models.Car;
 import com.lmig.gfc.rentals.models.Fleet;
 import com.lmig.gfc.rentals.models.Person;
@@ -56,7 +62,7 @@ public class RentalController {
 	}
 	
 	@RequestMapping("/add_car")
-	public ModelAndView showAddCarForm(String make, String model, String year) {
+	public ModelAndView showAddCarForm(String make, String model, String year) throws JsonGenerationException, JsonMappingException, IOException {
 		if (make != null && !make.isEmpty()
 				&& model != null && !model.isEmpty()
 				&& year != null && !year.isEmpty()) {
